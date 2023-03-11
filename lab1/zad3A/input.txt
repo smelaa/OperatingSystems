@@ -1,0 +1,15 @@
+init 4
+count ../zad1/my_library.c
+count ../zad1/my_library.h
+count ../zad2/my_library.h
+count ../zad2/main.c
+show 0
+show 1
+show 2
+show 3
+delete 0
+delete 1
+delete 2
+delete 3
+destroy
+quit
