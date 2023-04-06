@@ -1,0 +1,28 @@
+### FORK
+IGNORE:
+PID: 18259	raised signal
+PID: 18260	raised signal
+HANDLER:
+PID: 18263	raised signal
+PID: 18263	received signal 10
+PID: 18264	raised signal
+PID: 18264	received signal 10
+MASK:
+PID: 18267	raised signal
+PID: 18268	raised signal
+PENDING:
+PID: 18271	raised signal
+PID: 18271	SIGUSR1 is pending
+PID: 18272	SIGUSR1 is not pending
+
+### EXEC
+IGNORE:
+PID: 18276	raised signal
+PID: 18276	raised signal
+MASK:
+PID: 18279	raised signal
+PID: 18279	raised signal
+PENDING:
+PID: 18282	raised signal
+PID: 18282	SIGUSR1 is pending
+PID: 18282	SIGUSR1 is pending

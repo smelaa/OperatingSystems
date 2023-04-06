@@ -1,0 +1,39 @@
+### SIGINFO
+## PARENT:
+Signal number:	10
+PID:		18135
+UID:		1000
+Signal code:	-6
+Errno:		0
+## CHILD:
+Signal number:	10
+PID:		18136
+UID:		1000
+Signal code:	-6
+Errno:		0
+
+### NODEFER 
+## WITH FLAG SA_NODEFER
++ Received signal	1
++ Received signal	2
++ Received signal	3
++ Received signal	4
+- Handled signal	4
+- Handled signal	3
+- Handled signal	2
+- Handled signal	1
+## WITH DIFFERENT FLAG
++ Received signal	1
+- Handled signal	1
++ Received signal	2
+- Handled signal	2
++ Received signal	3
+- Handled signal	3
++ Received signal	4
+- Handled signal	4
+
+### RESETHAND
+Sending signal 10...
+Resetting handler for signal 10
+Sending signal 10 again...
+User defined signal 1
