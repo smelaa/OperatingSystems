@@ -1,0 +1,11 @@
+1.Sposob uzywania programu:
+Po skompilowaniu wszystkich plikow (make):
+a) Najpierw nalezy uruchomic program engine.
+b) W drugim terminalu nalezy uruchomic program client z jednym parametrem: liczba od 1 do 9, ktora okresla czas wykonywania fryzury.
+Program engine konczy dzialanie gdy zostanie obsluzona okreslona (w pliku heading.h) liczba klientow.
+
+2.Parametry programu:
+Parametry (takie jak: liczba fryzjerow, liczba foteli, liczba miejsc w poczekalni, liczba klientow) mozna okreslic w pliku headinh.h.
+
+3.Biblioteki:
+sem i queue to biblioteki (dolaczone statycznie), ktore zawieraja funkcje zwiazane z zarzadzaniem pamiecia wspoldzielona oraz semaforami, ktore sa analogiczne dla wszystkich podprogramow.
