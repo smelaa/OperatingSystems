@@ -8,9 +8,9 @@ int connect_unix(char* path, char* user) {
     addr.sun_family = AF_UNIX;
     snprintf(bind_addr.sun_path, sizeof bind_addr.sun_path, "/tmp/%ld%s", time(NULL), user);
     strncpy(addr.sun_path, path, sizeof addr.sun_path);
-    int socketfd = safe (socket(AF_UNIX, SOCK_DGRAM, 0));	
-    safe (bind(socketfd, (void*) &bind_addr, sizeof addr));
-    safe (connect(socketfd, (struct sockaddr*) &addr, sizeof addr));
+    int socketfd = socket(AF_UNIX, SOCK_DGRAM, 0);	
+    bind(socketfd, (void*) &bind_addr, sizeof addr);
+    connect(socketfd, (struct sockaddr*) &addr, sizeof addr);
 
     return socketfd;
 }
@@ -21,11 +21,11 @@ int connect_web(char* ipv4, int port) {
     addr.sin_family = AF_INET;
     addr.sin_port = htons(port);
     if (inet_pton(AF_INET, ipv4, &addr.sin_addr) <= 0) {
-        print("Invalid address\n");
+        printf("Invalid address\n");
         exit(0);
     }
-    int socketfd = safe (socket(AF_INET, SOCK_DGRAM, 0));
-    safe (connect(socketfd, (struct sockaddr*) &addr, sizeof addr));
+    int socketfd = socket(AF_INET, SOCK_DGRAM, 0);
+    connect(socketfd, (struct sockaddr*) &addr, sizeof addr);
     
     return socketfd;
 }
@@ -66,9 +66,9 @@ int main(int argc, char** argv) {
     epoll_ctl(epoll_fd, EPOLL_CTL_ADD, socket_fd, &socket_event);
 
     struct epoll_event events[2];
-    loop {
-        int nread = safe (epoll_wait(epoll_fd, events, 2, 1));
-        repeat(nread) {
+    while(true) {
+        int nread = epoll_wait(epoll_fd, events, 2, 1);
+        for(int i=0;i<nread;i++) {
         if (events[i].data.fd == STDIN_FILENO) {
             char buffer[512] = {};
 

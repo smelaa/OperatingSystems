@@ -155,7 +155,7 @@ void handle_sigint(int _) {
 
 int main(int argc, char** argv) {
     if (argc != 3) {
-        print("Wrong number of arguments. Type: *port* *path*\n");
+        printf("Wrong number of arguments. Type: *port* *path*\n");
         exit(0);
     }
     int port = atoi(argv[1]);
@@ -182,9 +182,9 @@ int main(int argc, char** argv) {
     pthread_create(&pinging_thread, NULL, ping, NULL);
 
     struct epoll_event events[1028];
-    loop {
+    while(true){
         int nread = epoll_wait(epoll_fd, events, 1028, -1);
-        repeat (nread) {
+        for(int i=0;i<nread;i++) {
             int socket_fd = events[i].data.fd;
             message msg;
             union addr addr;
@@ -193,8 +193,11 @@ int main(int argc, char** argv) {
             if (msg.type == CONNECT) {
                 new_client(&addr, addrlen, socket_fd, msg.nick);
             } else {
-                int i = find(int i = 0; i < CLIENT_MAXNUM; i++, memcmp(&clients[i].addr, &addr, addrlen) == 0);
-                on_client_message(&clients[i], &msg);
+                int j;
+                for (j=0;j<CLIENT_MAXNUM;j++){
+                    if(memcmp(&clients[j].addr, &addr, addrlen) == 0) break;
+                } 
+                on_client_message(&clients[j], &msg);
             }
         }
     }
